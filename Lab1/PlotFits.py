@@ -18,19 +18,18 @@ def fits2(r, a, b, c):
 
 #llegir txt crear un map amb (word, num) descartant paraules 
 map = {}
-with open("dades.txt") as data:
+end = False
+with open("data/dataArxivAbs.txt") as data:
     for line in data:
-        line.strip()
-        n, word = line.split(",", 1)
-        if valid(word):
-            map[word] = int(n)
+        if line == "--------------------\n": 
+            end = True
+        elif not end:
+            line.strip()
+            n, word = line.split(",", 1)
+            if valid(word):
+                map[word] = int(n)
 
-#with open("xd.txt", 'w') as file:
-#    for w in map:
-#        file.write(f"{map[w]}, {w}")
 sns.set_theme()
-sns.set_style("darkgrid")
-sns.color_palette("pastel")
 
 valors = list(map.values())
 valors.sort(reverse=True)
@@ -38,17 +37,16 @@ plt.figure(figsize=(10,10))
 sns.lineplot(valors)
 
 #a ~= 1
-popt, pcov = curve_fit(fits, range(0, len(valors)), valors)
+popt, pcov = curve_fit(fits, range(0, len(valors)), valors, bounds=([0.5, 0, -np.inf], [3, np.inf, np.inf]))
 plt.plot(range(0, len(valors)), fits(range(0, len(valors)), *popt), 'r-', label='fit')
 
 #a ~= 1.7
-popt2, pcov2 = curve_fit(fits, range(1000, len(valors)), valors[-(len(valors) - 1000):])
+popt2, pcov2 = curve_fit(fits, range(1000, len(valors)), valors[-(len(valors) - 1000):], bounds=([0.5, 0, -np.inf], [3, np.inf, np.inf]))
 plt.plot(range(1000, len(valors)), fits(range(1000, len(valors)), *popt2), 'g-', label='fit2')
-print(popt2)
 
 plt.xlabel("rank (log)")
 plt.ylabel("freq (log)")
 
 plt.yscale('log')
 plt.xscale('log')
-plt.show
+plt.show()
