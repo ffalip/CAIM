@@ -19,7 +19,7 @@ def fits2(r, a, b, c):
 #llegir txt crear un map amb (word, num) descartant paraules 
 map = {}
 end = False
-with open("data/dataAllNovels.txt") as data:
+with open("data/dataArxivAbs.txt") as data:
     for line in data:
         if line == "--------------------\n": 
             end = True
@@ -41,16 +41,17 @@ popt, pcov = curve_fit(fits, range(0, len(valors)), valors, bounds=([0.5, 0, -np
 plt.plot(range(0, len(valors)), fits(range(0, len(valors)), *popt), 'r-', label='curve fit')
 
 #a ~= 1.7
-#popt2, pcov2 = curve_fit(fits, range(1000, len(valors)), valors[-(len(valors) - 1000):], bounds=([0.5, 0, -np.inf], [3, np.inf, np.inf]))
-#plt.plot(range(1000, len(valors)), fits(range(1000, len(valors)), *popt2), 'g-', label='fit2')
+popt2, pcov2 = curve_fit(fits, range(500, len(valors)), valors[-(len(valors) - 500):], bounds=([0.5, 0, -np.inf], [3, np.inf, np.inf]))
+plt.plot(range(500, len(valors)), fits(range(500, len(valors)), *popt2), 'g-', label='curve fit2', color='black')
 
 plt.xlabel("rank (log)")
 plt.ylabel("freq (log)")
 
 plt.yscale('log')
 plt.xscale('log')
-plt.title("Rank-Frequency of Novels", fontsize='large', fontweight = 'bold', pad = 20)
-plt.text(0.5, 0.8, f"a = {popt[0]:.4f}\nb = {popt[1]:.4f}\nc = {popt[2]:.4f}", fontsize=11, transform=plt.gcf().transFigure, bbox=dict(facecolor='white', alpha=0.6, edgecolor='black', boxstyle='round,pad=0.4'))
+plt.title("Rank-Frequency of Arxiv_abs", fontsize='large', fontweight = 'bold', pad = 20)
+plt.text(0.35, 0.75, f"a1 = {popt[0]:.4f}", fontsize=11, transform=plt.gcf().transFigure, bbox=dict(facecolor='white', alpha=0.6, edgecolor='black', boxstyle='round,pad=0.4'))
+plt.text(0.7, 0.2, f"a2 = {popt2[0]:.4f}", fontsize=11, transform=plt.gcf().transFigure, bbox=dict(facecolor='white', alpha=0.6, edgecolor='black', boxstyle='round,pad=0.4'))
 plt.legend()
 plt.show()
 
