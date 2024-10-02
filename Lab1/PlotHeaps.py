@@ -37,7 +37,7 @@ sns.lineplot(valors)
 #popt, pcov = curve_fit(fits, range(0, len(valors)), valors, bounds=([0.5, 0, -np.inf], [3, np.inf, np.inf]))
 #plt.plot(range(0, len(valors)), fits(range(0, len(valors)), *popt), 'r-', label='fit')
 
-#a ~= 1.7
+#a ~= 1.7 
 #popt2, pcov2 = curve_fit(fits, range(1000, len(valors)), valors[-(len(valors) - 1000):], bounds=([0.5, 0, -np.inf], [3, np.inf, np.inf]))
 #plt.plot(range(1000, len(valors)), fits(range(1000, len(valors)), *popt2), 'g-', label='fit2')
 
