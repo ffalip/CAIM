@@ -19,7 +19,7 @@ def fits2(r, a, b, c):
 #llegir txt crear un map amb (word, num) descartant paraules 
 map = {}
 end = False
-with open("data/dades.txt") as data:
+with open("data/dataAllNovels.txt") as data:
     for line in data:
         if line == "--------------------\n": 
             end = True
@@ -49,7 +49,7 @@ plt.ylabel("freq (log)")
 
 plt.yscale('log')
 plt.xscale('log')
-plt.title("Rank-Frequency of 20_newsgroups", fontsize='large', fontweight = 'bold', pad = 20)
+plt.title("Rank-Frequency of Novels", fontsize='large', fontweight = 'bold', pad = 20)
 plt.text(0.5, 0.8, f"a = {popt[0]:.4f}\nb = {popt[1]:.4f}\nc = {popt[2]:.4f}", fontsize=11, transform=plt.gcf().transFigure, bbox=dict(facecolor='white', alpha=0.6, edgecolor='black', boxstyle='round,pad=0.4'))
 plt.legend()
 plt.show()
