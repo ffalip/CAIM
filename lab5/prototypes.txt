@@ -1,0 +1,2 @@
+CLASS0:ask+1.0 believ+1.0 both+1.0 did+1.0 general+1.0 him+1.0 his+1.0 most+1.0 noth+1.0 opinion+1.0 person+1.0 post+1.0 rather+1.0 said+1.0 seem+1.0 sinc+1.0 through+1.0 wrong+1.0 wrote+1.0 
+CLASS1:after+1.0 bad+1.0 believ+1.0 caus+1.0 enough+1.0 exist+1.0 fact+1.0 idea+1.0 littl+1.0 might+1.0 news+1.0 reason+1.0 respons+1.0 said+1.0 someon+1.0 still+1.0 support+1.0 whi+1.0 year+1.0 

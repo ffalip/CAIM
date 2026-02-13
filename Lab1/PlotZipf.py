@@ -19,7 +19,7 @@ def fits2(r, a, b, c):
 #llegir txt crear un map amb (word, num) descartant paraules 
 map = {}
 end = False
-with open("data/dataArxivAbs.txt") as data:
+with open("data/dataPoe.txt") as data:
     for line in data:
         if line == "--------------------\n": 
             end = True
@@ -47,8 +47,8 @@ plt.plot(range(500, len(valors)), fits(range(500, len(valors)), *popt2), 'g-', l
 plt.xlabel("rank (log)")
 plt.ylabel("freq (log)")
 
-plt.yscale('log')
-plt.xscale('log')
+#plt.yscale('log')
+#plt.xscale('log')
 plt.title("Rank-Frequency of Arxiv_abs", fontsize='large', fontweight = 'bold', pad = 20)
 plt.text(0.35, 0.75, f"a1 = {popt[0]:.4f}", fontsize=11, transform=plt.gcf().transFigure, bbox=dict(facecolor='white', alpha=0.6, edgecolor='black', boxstyle='round,pad=0.4'))
 plt.text(0.7, 0.2, f"a2 = {popt2[0]:.4f}", fontsize=11, transform=plt.gcf().transFigure, bbox=dict(facecolor='white', alpha=0.6, edgecolor='black', boxstyle='round,pad=0.4'))
